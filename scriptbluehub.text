@@ -1,0 +1,54 @@
+-- [[ CẤU HÌNH HỆ THỐNG GET KEY ]]
+local CorrectKey = "scriptlonghihisieuba7"
+local KeyLink = "https://taixuongmienphi.click/s/key-scriptz1u1dmfmln4qrzl"
+
+-- Tạo giao diện đơn giản (Library UI)
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "HỆ THỐNG XÁC THỰC KEY",
+    SubTitle = "by Gemini",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(500, 320),
+    Acrylic = true,
+    Theme = "Dark"
+})
+
+local Tabs = { Main = Window:AddTab({ Title = "Nhập Key", Icon = "key" }) }
+
+Tabs.Main:AddParagraph({
+    Title = "Link lấy Key:",
+    Content = KeyLink
+})
+
+Tabs.Main:AddButton({
+    Title = "Sao chép link Get Key",
+    Description = "Bấm để copy link và dán vào trình duyệt",
+    Callback = function()
+        setclipboard(KeyLink)
+        Fluent:Notify({ Title = "Thông báo", Content = "Đã copy link vào bộ nhớ tạm!", Duration = 5 })
+    end
+})
+
+local KeyInput = Tabs.Main:AddInput("Input", {
+    Title = "Nhập Key vào đây:",
+    Default = "",
+    Placeholder = "Dán key của bạn...",
+    Numeric = false,
+    Finished = false,
+    Callback = function(Value)
+        if Value == CorrectKey then
+            Fluent:Notify({ Title = "Thành công", Content = "Đang khởi động Script...", Duration = 5 })
+            task.wait(1)
+            Window:Destroy() -- Đóng menu get key
+            
+            -- [[ KHỞI ĐỘNG SCRIPT CHÍNH ]]
+            _G.AutoTranslate = true
+            _G.SaveConfig = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
+        else
+            Fluent:Notify({ Title = "Lỗi", Content = "Sai Key rồi bạn ơi, vui lòng kiểm tra lại!", Duration = 5 })
+        end
+    end
+})
+
+Fluent:Notify({ Title = "Chào mừng", Content = "Vui lòng nhập Key để tiếp tục sử dụng", Duration = 5 })
