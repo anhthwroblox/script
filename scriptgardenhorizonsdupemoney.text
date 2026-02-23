@@ -1,0 +1,71 @@
+-- Khởi tạo giao diện (GUI)
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local KeyInput = Instance.new("TextBox")
+local CheckKeyBtn = Instance.new("TextButton")
+local GetKeyBtn = Instance.new("TextButton")
+local CopyLinkBtn = Instance.new("TextButton")
+
+-- Cấu hình GUI cơ bản
+ScreenGui.Parent = game.CoreGui
+MainFrame.Size = UDim2.new(0, 300, 0, 250)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -125)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.Parent = ScreenGui
+
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.Text = "HỆ THỐNG GET KEY"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Parent = MainFrame
+
+-- Ô nhập Key
+KeyInput.Size = UDim2.new(0, 200, 0, 40)
+KeyInput.Position = UDim2.new(0.5, -100, 0.3, 0)
+KeyInput.PlaceholderText = "Nhập Key tại đây..."
+KeyInput.Parent = MainFrame
+
+-- Nút Kiểm tra Key
+CheckKeyBtn.Size = UDim2.new(0, 150, 0, 35)
+CheckKeyBtn.Position = UDim2.new(0.5, -75, 0.55, 0)
+CheckKeyBtn.Text = "Xác Nhận Key"
+CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+CheckKeyBtn.Parent = MainFrame
+
+-- Nút Sao chép Link Get Key
+CopyLinkBtn.Size = UDim2.new(0, 150, 0, 35)
+CopyLinkBtn.Position = UDim2.new(0.5, -75, 0.75, 0)
+CopyLinkBtn.Text = "Sao Chép Link Get Key"
+CopyLinkBtn.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+CopyLinkBtn.Parent = MainFrame
+
+--- CHỨC NĂNG ---
+
+local correctKey = "anhthwroblox"
+local getKeyLink = "https://taixuongmienphi.click/s/key-scriptz1u1lcqmlq4wqks"
+
+-- Chức năng sao chép link
+CopyLinkBtn.MouseButton1Click:Connect(function()
+    setclipboard(getKeyLink)
+    CopyLinkBtn.Text = "Đã chép link!"
+    wait(2)
+    CopyLinkBtn.Text = "Sao Chép Link Get Key"
+end)
+
+-- Chức năng kiểm tra key và chạy script
+CheckKeyBtn.MouseButton1Click:Connect(function()
+    if KeyInput.Text == correctKey then
+        MainFrame:Destroy() -- Tắt bảng nhập key
+        print("Key đúng! Đang khởi động Script...")
+        
+        -- Khởi động Script Blox Fruit của bạn
+        loadstring(game:HttpGet("https://pastebin.com/raw/Ai5WqH8N", true))()
+    else
+        CheckKeyBtn.Text = "Sai Key! Thử lại"
+        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        wait(2)
+        CheckKeyBtn.Text = "Xác Nhận Key"
+        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+    end
+end)
