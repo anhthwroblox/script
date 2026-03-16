@@ -1,0 +1,90 @@
+-- Khởi tạo giao diện (GUI)
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local KeyInput = Instance.new("TextBox")
+local CheckKeyBtn = Instance.new("TextButton")
+local CopyLinkBtn = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+-- Cấu hình Frame chính
+ScreenGui.Parent = game.CoreGui
+MainFrame.Size = UDim2.new(0, 320, 0, 240)
+MainFrame.Position = UDim2.new(0.5, -160, 0.5, -120)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true -- Cho phép kéo menu trên màn hình
+MainFrame.Parent = ScreenGui
+
+local MainCorner = Instance.new("UICorner")
+MainCorner.CornerRadius = ToolHeight or UDim.new(0, 10)
+MainCorner.Parent = MainFrame
+
+-- Tiêu đề
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.Text = "HỆ THỐNG GET KEY"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 20
+Title.Font = Enum.Font.SourceSansBold
+Title.BackgroundTransparency = 1
+Title.Parent = MainFrame
+
+-- Ô nhập Key
+KeyInput.Size = UDim2.new(0, 240, 0, 40)
+KeyInput.Position = UDim2.new(0.5, -120, 0.3, 0)
+KeyInput.PlaceholderText = "Dán Key vào đây..."
+KeyInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+KeyInput.TextColor3 = Color3.new(1, 1, 1)
+KeyInput.Parent = MainFrame
+Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
+
+-- Nút Kiểm tra Key
+CheckKeyBtn.Size = UDim2.new(0, 240, 0, 40)
+CheckKeyBtn.Position = UDim2.new(0.5, -120, 0.55, 0)
+CheckKeyBtn.Text = "XÁC NHẬN KEY"
+CheckKeyBtn.TextColor3 = Color3.new(1, 1, 1)
+CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+CheckKeyBtn.Parent = MainFrame
+Instance.new("UICorner", CheckKeyBtn).CornerRadius = UDim.new(0, 8)
+
+-- Nút Sao chép Link Get Key
+CopyLinkBtn.Size = UDim2.new(0, 240, 0, 40)
+CopyLinkBtn.Position = UDim2.new(0.5, -120, 0.77, 0)
+CopyLinkBtn.Text = "SAO CHÉP LINK GET KEY"
+CopyLinkBtn.TextColor3 = Color3.new(1, 1, 1)
+CopyLinkBtn.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+CopyLinkBtn.Parent = MainFrame
+Instance.new("UICorner", CopyLinkBtn).CornerRadius = UDim.new(0, 8)
+
+--- CHỨC NĂNG XỬ LÝ ---
+
+local correctKey = "anhthwroblox"
+local getKeyLink = "https://link4m.com/U1WLlo"
+
+-- Xử lý sao chép link
+CopyLinkBtn.MouseButton1Click:Connect(function()
+    setclipboard(getKeyLink)
+    CopyLinkBtn.Text = "ĐÃ SAO CHÉP LINK!"
+    wait(2)
+    CopyLinkBtn.Text = "SAO CHÉP LINK GET KEY"
+end)
+
+-- Xử lý kiểm tra key và chạy script tổng hợp
+CheckKeyBtn.MouseButton1Click:Connect(function()
+    if KeyInput.Text == correctKey then
+        CheckKeyBtn.Text = "KEY ĐÚNG! ĐANG TẢI..."
+        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        wait(1)
+        ScreenGui:Destroy() -- Xóa bảng key sau khi thành công
+        
+        -- Chạy Script Blox Fruits tổng hợp của bạn
+        loadstring(game:HttpGet("https://pastefy.app/hhiQgnJ2/raw"))()
+    else
+        CheckKeyBtn.Text = "SAI KEY! VUI LÒNG THỬ LẠI"
+        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        wait(2)
+        CheckKeyBtn.Text = "XÁC NHẬN KEY"
+        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+    end
+end)
