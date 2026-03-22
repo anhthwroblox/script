@@ -1,111 +1,116 @@
 --[[ 
-    Script System by AnhThw 
-    Link Get Key: https://link4m.net/W2JZonQS
-    Key: anhthwroblox
+    SYSTEM BY ANHTHW ROBLOX
+    LINK GET KEY: https://link4m.net/W2JZonQS
+    KEY: OBBVIP:4266
 ]]
 
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
 local UIGradient = Instance.new("UIGradient")
 local Title = Instance.new("TextLabel")
 local KeyInput = Instance.new("TextBox")
 local CopyBtn = Instance.new("TextButton")
 local SubmitBtn = Instance.new("TextButton")
-local Status = Instance.new("TextLabel")
 
--- Thiết lập GUI
+-- Cấu hình ScreenGui
 ScreenGui.Parent = game.CoreGui
-ScreenGui.Name = "AnhThw_KeySystem"
+ScreenGui.Name = "OBB_System_Vip"
 
+-- Khung Menu Chính (Bắt mắt với hiệu ứng bo góc và viền)
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MainFrame.Position = UDim2.new(0.5, -135, 0.5, -90)
-MainFrame.Size = UDim2.new(0, 270, 0, 180)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+MainFrame.Position = UDim2.new(0.5, -140, 0.5, -100)
+MainFrame.Size = UDim2.new(0, 280, 0, 200)
 MainFrame.Active = true
 MainFrame.Draggable = true
 
-UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = MainFrame
 
--- Hiệu ứng màu sắc bắt mắt (Gradient Tím - Xanh)
-UIGradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(83, 105, 255)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(173, 58, 255))
-}
-UIGradient.Parent = MainFrame
+-- Viền phát sáng cho Menu
+UIStroke.Parent = MainFrame
+UIStroke.Thickness = 2
+UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
 
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 215, 0)), -- Gold
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))    -- Red
+}
+UIGradient.Parent = UIStroke
+
+-- Tiêu đề
 Title.Parent = MainFrame
-Title.Text = "ANHTHW ROBLOX SYSTEM"
+Title.Text = "OBB VIP SYSTEM"
 Title.Font = Enum.Font.GothamBold
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 18
-Title.Size = UDim2.new(1, 0, 0, 40)
+Title.TextSize = 20
+Title.Size = UDim2.new(1, 0, 0, 50)
 Title.BackgroundTransparency = 1
 
+-- Ô nhập Key
 KeyInput.Parent = MainFrame
-KeyInput.PlaceholderText = "Dán Key vào đây..."
+KeyInput.PlaceholderText = "Nhập Key OBB tại đây..."
 KeyInput.Text = ""
-KeyInput.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-KeyInput.BackgroundTransparency = 0.6
-KeyInput.Position = UDim2.new(0.1, 0, 0.3, 0)
+KeyInput.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+KeyInput.Position = UDim2.new(0.1, 0, 0.3, 10)
 KeyInput.Size = UDim2.new(0.8, 0, 0, 35)
 KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyInput.Font = Enum.Font.GothamSemibold
+Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
 
-local InputCorner = Instance.new("UICorner")
-InputCorner.CornerRadius = UDim.new(0, 8)
-InputCorner.Parent = KeyInput
-
+-- Nút Sao chép Link GetKey
 CopyBtn.Parent = MainFrame
-CopyBtn.Text = "Lấy Link Get Key"
+CopyBtn.Text = "SAO CHÉP LINK GET KEY"
 CopyBtn.Font = Enum.Font.GothamBold
-CopyBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CopyBtn.BackgroundTransparency = 0.8
-CopyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-CopyBtn.Position = UDim2.new(0.1, 0, 0.55, 5)
+CopyBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+CopyBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
+CopyBtn.Position = UDim2.new(0.1, 0, 0.55, 15)
 CopyBtn.Size = UDim2.new(0.8, 0, 0, 25)
+Instance.new("UICorner", CopyBtn).CornerRadius = UDim.new(0, 5)
 
+-- Nút Kích hoạt (Xác nhận Key)
 SubmitBtn.Parent = MainFrame
-SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
+SubmitBtn.Text = "KÍCH HOẠT NGAY"
 SubmitBtn.Font = Enum.Font.GothamBold
-SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0) -- Màu Vàng Gold
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
 SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-SubmitBtn.Position = UDim2.new(0.1, 0, 0.75, 10)
-SubmitBtn.Size = UDim2.new(0.8, 0, 0, 30)
+SubmitBtn.Position = UDim2.new(0.1, 0, 0.75, 20)
+SubmitBtn.Size = UDim2.new(0.8, 0, 0, 35)
+Instance.new("UICorner", SubmitBtn).CornerRadius = UDim.new(0, 8)
 
-local SubmitCorner = Instance.new("UICorner")
-SubmitCorner.CornerRadius = UDim.new(0, 8)
-SubmitCorner.Parent = SubmitBtn
+--- LOGIC XỬ LÝ ---
 
---- XỬ LÝ CHỨC NĂNG ---
-
--- 1. Sao chép link Link4M
+-- 1. Chức năng sao chép
 CopyBtn.MouseButton1Click:Connect(function()
     setclipboard("https://link4m.net/W2JZonQS")
-    CopyBtn.Text = "ĐÃ SAO CHÉP!"
-    wait(1.5)
-    CopyBtn.Text = "Lấy Link Get Key"
+    CopyBtn.Text = "ĐÃ COPY LINK!"
+    wait(2)
+    CopyBtn.Text = "SAO CHÉP LINK GET KEY"
 end)
 
--- 2. Kiểm tra Key và Load MainLoader
+-- 2. Kiểm tra Key và Khởi động Script chính
 SubmitBtn.MouseButton1Click:Connect(function()
-    local userKey = KeyInput.Text
-    local correctKey = "anhthwroblox"
+    local input = KeyInput.Text
+    local correct = "OBBVIP:4266"
     
-    if userKey == correctKey then
-        SubmitBtn.Text = "ĐANG TẢI SCRIPT..."
-        SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 127)
+    if input == correct then
+        SubmitBtn.Text = "ĐANG KHỞI ĐỘNG..."
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
         wait(1)
         ScreenGui:Destroy()
-        -- Load script Blox tổng hợp từ Github
+        -- Load script Blox tổng hợp
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
     else
-        SubmitBtn.Text = "SAI KEY RỒI!"
-        SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 69, 0)
-        wait(1.5)
-        SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
+        SubmitBtn.Text = "KEY SAI! HÃY GET KEY LẠI"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        wait(2)
+        SubmitBtn.Text = "KÍCH HOẠT NGAY"
         SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+        SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
     end
 end)
