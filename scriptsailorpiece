@@ -1,90 +1,111 @@
--- Khởi tạo giao diện (GUI)
+--[[ 
+    Script System by AnhThw 
+    Link Get Key: https://link4m.net/W2JZonQS
+    Key: anhthwroblox
+]]
+
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
 local Title = Instance.new("TextLabel")
 local KeyInput = Instance.new("TextBox")
-local CheckKeyBtn = Instance.new("TextButton")
-local CopyLinkBtn = Instance.new("TextButton")
-local UICorner = Instance.new("UICorner")
+local CopyBtn = Instance.new("TextButton")
+local SubmitBtn = Instance.new("TextButton")
+local Status = Instance.new("TextLabel")
 
--- Cấu hình Frame chính
+-- Thiết lập GUI
 ScreenGui.Parent = game.CoreGui
-MainFrame.Size = UDim2.new(0, 320, 0, 240)
-MainFrame.Position = UDim2.new(0.5, -160, 0.5, -120)
-MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-MainFrame.BorderSizePixel = 0
-MainFrame.Active = true
-MainFrame.Draggable = true -- Cho phép kéo menu trên màn hình
+ScreenGui.Name = "AnhThw_KeySystem"
+
+MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.Position = UDim2.new(0.5, -135, 0.5, -90)
+MainFrame.Size = UDim2.new(0, 270, 0, 180)
+MainFrame.Active = true
+MainFrame.Draggable = true
 
-local MainCorner = Instance.new("UICorner")
-MainCorner.CornerRadius = ToolHeight or UDim.new(0, 10)
-MainCorner.Parent = MainFrame
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = MainFrame
 
--- Tiêu đề
-Title.Size = UDim2.new(1, 0, 0, 50)
-Title.Text = "HỆ THỐNG GET KEY"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 20
-Title.Font = Enum.Font.SourceSansBold
-Title.BackgroundTransparency = 1
+-- Hiệu ứng màu sắc bắt mắt (Gradient Tím - Xanh)
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(83, 105, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(173, 58, 255))
+}
+UIGradient.Parent = MainFrame
+
 Title.Parent = MainFrame
+Title.Text = "ANHTHW ROBLOX SYSTEM"
+Title.Font = Enum.Font.GothamBold
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 18
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.BackgroundTransparency = 1
 
--- Ô nhập Key
-KeyInput.Size = UDim2.new(0, 240, 0, 40)
-KeyInput.Position = UDim2.new(0.5, -120, 0.3, 0)
-KeyInput.PlaceholderText = "Dán Key vào đây..."
-KeyInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-KeyInput.TextColor3 = Color3.new(1, 1, 1)
 KeyInput.Parent = MainFrame
-Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
+KeyInput.PlaceholderText = "Dán Key vào đây..."
+KeyInput.Text = ""
+KeyInput.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+KeyInput.BackgroundTransparency = 0.6
+KeyInput.Position = UDim2.new(0.1, 0, 0.3, 0)
+KeyInput.Size = UDim2.new(0.8, 0, 0, 35)
+KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyInput.Font = Enum.Font.GothamSemibold
 
--- Nút Kiểm tra Key
-CheckKeyBtn.Size = UDim2.new(0, 240, 0, 40)
-CheckKeyBtn.Position = UDim2.new(0.5, -120, 0.55, 0)
-CheckKeyBtn.Text = "XÁC NHẬN KEY"
-CheckKeyBtn.TextColor3 = Color3.new(1, 1, 1)
-CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-CheckKeyBtn.Parent = MainFrame
-Instance.new("UICorner", CheckKeyBtn).CornerRadius = UDim.new(0, 8)
+local InputCorner = Instance.new("UICorner")
+InputCorner.CornerRadius = UDim.new(0, 8)
+InputCorner.Parent = KeyInput
 
--- Nút Sao chép Link Get Key
-CopyLinkBtn.Size = UDim2.new(0, 240, 0, 40)
-CopyLinkBtn.Position = UDim2.new(0.5, -120, 0.77, 0)
-CopyLinkBtn.Text = "SAO CHÉP LINK GET KEY"
-CopyLinkBtn.TextColor3 = Color3.new(1, 1, 1)
-CopyLinkBtn.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
-CopyLinkBtn.Parent = MainFrame
-Instance.new("UICorner", CopyLinkBtn).CornerRadius = UDim.new(0, 8)
+CopyBtn.Parent = MainFrame
+CopyBtn.Text = "Lấy Link Get Key"
+CopyBtn.Font = Enum.Font.GothamBold
+CopyBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CopyBtn.BackgroundTransparency = 0.8
+CopyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyBtn.Position = UDim2.new(0.1, 0, 0.55, 5)
+CopyBtn.Size = UDim2.new(0.8, 0, 0, 25)
 
---- CHỨC NĂNG XỬ LÝ ---
+SubmitBtn.Parent = MainFrame
+SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
+SubmitBtn.Font = Enum.Font.GothamBold
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0) -- Màu Vàng Gold
+SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+SubmitBtn.Position = UDim2.new(0.1, 0, 0.75, 10)
+SubmitBtn.Size = UDim2.new(0.8, 0, 0, 30)
 
-local correctKey = "anhthwroblox"
-local getKeyLink = "https://link4m.com/U1WLlo"
+local SubmitCorner = Instance.new("UICorner")
+SubmitCorner.CornerRadius = UDim.new(0, 8)
+SubmitCorner.Parent = SubmitBtn
 
--- Xử lý sao chép link
-CopyLinkBtn.MouseButton1Click:Connect(function()
-    setclipboard(getKeyLink)
-    CopyLinkBtn.Text = "ĐÃ SAO CHÉP LINK!"
-    wait(2)
-    CopyLinkBtn.Text = "SAO CHÉP LINK GET KEY"
+--- XỬ LÝ CHỨC NĂNG ---
+
+-- 1. Sao chép link Link4M
+CopyBtn.MouseButton1Click:Connect(function()
+    setclipboard("https://link4m.net/W2JZonQS")
+    CopyBtn.Text = "ĐÃ SAO CHÉP!"
+    wait(1.5)
+    CopyBtn.Text = "Lấy Link Get Key"
 end)
 
--- Xử lý kiểm tra key và chạy script tổng hợp
-CheckKeyBtn.MouseButton1Click:Connect(function()
-    if KeyInput.Text == correctKey then
-        CheckKeyBtn.Text = "KEY ĐÚNG! ĐANG TẢI..."
-        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+-- 2. Kiểm tra Key và Load MainLoader
+SubmitBtn.MouseButton1Click:Connect(function()
+    local userKey = KeyInput.Text
+    local correctKey = "anhthwroblox"
+    
+    if userKey == correctKey then
+        SubmitBtn.Text = "ĐANG TẢI SCRIPT..."
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 127)
         wait(1)
-        ScreenGui:Destroy() -- Xóa bảng key sau khi thành công
-        
-        -- Chạy Script Blox Fruits tổng hợp của bạn
-        loadstring(game:HttpGet("https://pastefy.app/hhiQgnJ2/raw"))()
+        ScreenGui:Destroy()
+        -- Load script Blox tổng hợp từ Github
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
     else
-        CheckKeyBtn.Text = "SAI KEY! VUI LÒNG THỬ LẠI"
-        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-        wait(2)
-        CheckKeyBtn.Text = "XÁC NHẬN KEY"
-        CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+        SubmitBtn.Text = "SAI KEY RỒI!"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 69, 0)
+        wait(1.5)
+        SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
     end
 end)
