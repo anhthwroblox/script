@@ -1,7 +1,7 @@
 --[[ 
-    AUTO FARM BOUNTY SYSTEM 
+    BANANA HUB KEY SYSTEM 
     LINK GET KEY: https://link4m.net/9YQpN
-    KEY: scriptlonghihisieuba7
+    KEY: ronnei_bloxfruit1611
 ]]
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -16,7 +16,7 @@ local SubmitBtn = Instance.new("TextButton")
 
 -- Cấu hình ScreenGui
 ScreenGui.Parent = game.CoreGui
-ScreenGui.Name = "Bounty_System_Vip"
+ScreenGui.Name = "BananaHub_System"
 
 -- Hàm tạo THÔNG BÁO CHỮ ĐỎ NHẸ RÕ NÉT (Giữa màn hình)
 local function NotifyRed(text)
@@ -35,7 +35,7 @@ local function NotifyRed(text)
     Label.TextStrokeTransparency = 0.3 
     Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
     
-    -- Hiệu ứng mờ dần sau 3.5 giây
+    -- Hiệu ứng chữ mờ dần sau 3.5 giây
     task.spawn(function()
         task.wait(3.5)
         for i = 0, 1, 0.1 do
@@ -47,10 +47,10 @@ local function NotifyRed(text)
     end)
 end
 
--- Khung Menu Chính
+-- Khung Menu Chính (Giao diện Banana Hub)
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 10)
 MainFrame.Position = UDim2.new(0.5, -140, 0.5, -100)
 MainFrame.Size = UDim2.new(0, 280, 0, 200)
 MainFrame.Active = true
@@ -59,25 +59,25 @@ MainFrame.Draggable = true
 UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = MainFrame
 
--- Viền Neon đổi màu Đỏ - Đen cực ngầu
+-- Viền phát sáng màu Vàng - Đỏ
 UIStroke.Parent = MainFrame
 UIStroke.Thickness = 3
 UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 UIStroke.Color = Color3.fromRGB(255, 255, 255)
 
 UIGradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- Đỏ
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(50, 0, 0)), -- Đỏ thẫm
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0)) -- Đỏ
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)), -- Vàng Banana
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 0, 0)), -- Đỏ
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0))  -- Vàng Banana
 }
 UIGradient.Parent = UIStroke
 
--- Tiêu đề Menu: AUTO FARM BOUNTY
+-- Tiêu đề Menu: BANANA HUB
 Title.Parent = MainFrame
-Title.Text = "AUTO FARM BOUNTY"
+Title.Text = "BANANA HUB"
 Title.Font = Enum.Font.GothamBold
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 18
+Title.TextColor3 = Color3.fromRGB(255, 255, 0) -- Chữ màu vàng
+Title.TextSize = 22
 Title.Size = UDim2.new(1, 0, 0, 50)
 Title.BackgroundTransparency = 1
 
@@ -97,17 +97,17 @@ CopyBtn.Parent = MainFrame
 CopyBtn.Text = "SAO CHÉP LINK GET KEY"
 CopyBtn.Font = Enum.Font.GothamBold
 CopyBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
-CopyBtn.TextColor3 = Color3.fromRGB(255, 120, 120) -- Màu chữ đỏ nhẹ
+CopyBtn.TextColor3 = Color3.fromRGB(255, 120, 120) -- Màu đỏ nhẹ
 CopyBtn.Position = UDim2.new(0.1, 0, 0.58, 5)
 CopyBtn.Size = UDim2.new(0.8, 0, 0, 25)
 Instance.new("UICorner", CopyBtn).CornerRadius = UDim.new(0, 5)
 
 -- Nút Kích hoạt Script
 SubmitBtn.Parent = MainFrame
-SubmitBtn.Text = "XÁC NHẬN KEY"
+SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
 SubmitBtn.Font = Enum.Font.GothamBold
-SubmitBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 0) -- Màu Vàng
+SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 SubmitBtn.Position = UDim2.new(0.1, 0, 0.78, 10)
 SubmitBtn.Size = UDim2.new(0.8, 0, 0, 35)
 Instance.new("UICorner", SubmitBtn).CornerRadius = UDim.new(0, 10)
@@ -119,17 +119,17 @@ CopyBtn.MouseButton1Click:Connect(function()
     setclipboard("https://link4m.net/9YQpN")
     CopyBtn.Text = "ĐÃ SAO CHÉP!"
     
-    -- Hiện thông báo theo yêu cầu: "dán lên trình duyệt để getkey" màu đỏ nhẹ
+    -- Hiện thông báo: "dán lên trình duyệt để getkey" màu đỏ nhẹ rõ nét
     NotifyRed("Dán lên trình duyệt để getkey")
     
     task.wait(2)
     CopyBtn.Text = "SAO CHÉP LINK GET KEY"
 end)
 
--- 2. Kiểm tra Key và Chạy Script Bnty Nexus
+-- 2. Kiểm tra Key và Chạy Banana Hub
 SubmitBtn.MouseButton1Click:Connect(function()
     local userKey = KeyInput.Text
-    local correctKey = "scriptlonghihisieuba7"
+    local correctKey = "ronnei_bloxfruit1611"
     
     if userKey == correctKey then
         SubmitBtn.Text = "XÁC MINH THÀNH CÔNG!"
@@ -137,13 +137,15 @@ SubmitBtn.MouseButton1Click:Connect(function()
         SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
         task.wait(1)
         ScreenGui:Destroy()
-        -- Load script Auto Farm Bounty (Nexus Devs)
-        loadstring(game:HttpGet("https://bnty.nexusdevs.fun/_loaderui.lua"))()
+        -- Load script Banana Hub (Comback Version)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/longhihilonghihi-hub/BananaHub/refs/heads/main/CombackVersion"))()
     else
         SubmitBtn.Text = "SAI KEY! KIỂM TRA LẠI"
-        SubmitBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-        task.wait(2)
-        SubmitBtn.Text = "XÁC NHẬN KEY"
         SubmitBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+        SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        task.wait(2)
+        SubmitBtn.Text = "KÍCH HOẠT SCRIPT"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+        SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
     end
 end)
