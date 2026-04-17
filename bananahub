@@ -1,0 +1,149 @@
+--[[ 
+    AUTO FARM BOUNTY SYSTEM 
+    LINK GET KEY: https://link4m.net/9YQpN
+    KEY: scriptlonghihisieuba7
+]]
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+local UIGradient = Instance.new("UIGradient")
+local Title = Instance.new("TextLabel")
+local KeyInput = Instance.new("TextBox")
+local CopyBtn = Instance.new("TextButton")
+local SubmitBtn = Instance.new("TextButton")
+
+-- Cấu hình ScreenGui
+ScreenGui.Parent = game.CoreGui
+ScreenGui.Name = "Bounty_System_Vip"
+
+-- Hàm tạo THÔNG BÁO CHỮ ĐỎ NHẸ RÕ NÉT (Giữa màn hình)
+local function NotifyRed(text)
+    local NotifyGui = Instance.new("ScreenGui")
+    NotifyGui.Parent = game.CoreGui
+    
+    local Label = Instance.new("TextLabel")
+    Label.Parent = NotifyGui
+    Label.Size = UDim2.new(0, 500, 0, 50)
+    Label.Position = UDim2.new(0.5, -250, 0.25, 0) -- Vị trí phía trên trung tâm
+    Label.BackgroundTransparency = 1
+    Label.TextColor3 = Color3.fromRGB(255, 120, 120) -- MÀU ĐỎ NHẸ (Pastel Red)
+    Label.Text = text
+    Label.Font = Enum.Font.GothamBold -- Phông chữ rõ nét nhất
+    Label.TextSize = 22
+    Label.TextStrokeTransparency = 0.3 
+    Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    
+    -- Hiệu ứng mờ dần sau 3.5 giây
+    task.spawn(function()
+        task.wait(3.5)
+        for i = 0, 1, 0.1 do
+            Label.TextTransparency = i
+            Label.TextStrokeTransparency = 0.3 + (i * 0.7)
+            task.wait(0.05)
+        end
+        NotifyGui:Destroy()
+    end)
+end
+
+-- Khung Menu Chính
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.Position = UDim2.new(0.5, -140, 0.5, -100)
+MainFrame.Size = UDim2.new(0, 280, 0, 200)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = MainFrame
+
+-- Viền Neon đổi màu Đỏ - Đen cực ngầu
+UIStroke.Parent = MainFrame
+UIStroke.Thickness = 3
+UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
+
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- Đỏ
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(50, 0, 0)), -- Đỏ thẫm
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0)) -- Đỏ
+}
+UIGradient.Parent = UIStroke
+
+-- Tiêu đề Menu: AUTO FARM BOUNTY
+Title.Parent = MainFrame
+Title.Text = "AUTO FARM BOUNTY"
+Title.Font = Enum.Font.GothamBold
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 18
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundTransparency = 1
+
+-- Ô nhập Key
+KeyInput.Parent = MainFrame
+KeyInput.PlaceholderText = "Nhập Key tại đây..."
+KeyInput.Text = ""
+KeyInput.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+KeyInput.Position = UDim2.new(0.1, 0, 0.35, 0)
+KeyInput.Size = UDim2.new(0.8, 0, 0, 35)
+KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyInput.Font = Enum.Font.GothamSemibold
+Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
+
+-- Nút Sao chép Link
+CopyBtn.Parent = MainFrame
+CopyBtn.Text = "SAO CHÉP LINK GET KEY"
+CopyBtn.Font = Enum.Font.GothamBold
+CopyBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+CopyBtn.TextColor3 = Color3.fromRGB(255, 120, 120) -- Màu chữ đỏ nhẹ
+CopyBtn.Position = UDim2.new(0.1, 0, 0.58, 5)
+CopyBtn.Size = UDim2.new(0.8, 0, 0, 25)
+Instance.new("UICorner", CopyBtn).CornerRadius = UDim.new(0, 5)
+
+-- Nút Kích hoạt Script
+SubmitBtn.Parent = MainFrame
+SubmitBtn.Text = "XÁC NHẬN KEY"
+SubmitBtn.Font = Enum.Font.GothamBold
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitBtn.Position = UDim2.new(0.1, 0, 0.78, 10)
+SubmitBtn.Size = UDim2.new(0.8, 0, 0, 35)
+Instance.new("UICorner", SubmitBtn).CornerRadius = UDim.new(0, 10)
+
+--- CHỨC NĂNG XỬ LÝ ---
+
+-- 1. Sao chép và hiện dòng chữ đỏ nhẹ
+CopyBtn.MouseButton1Click:Connect(function()
+    setclipboard("https://link4m.net/9YQpN")
+    CopyBtn.Text = "ĐÃ SAO CHÉP!"
+    
+    -- Hiện thông báo theo yêu cầu: "dán lên trình duyệt để getkey" màu đỏ nhẹ
+    NotifyRed("Dán lên trình duyệt để getkey")
+    
+    task.wait(2)
+    CopyBtn.Text = "SAO CHÉP LINK GET KEY"
+end)
+
+-- 2. Kiểm tra Key và Chạy Script Bnty Nexus
+SubmitBtn.MouseButton1Click:Connect(function()
+    local userKey = KeyInput.Text
+    local correctKey = "scriptlonghihisieuba7"
+    
+    if userKey == correctKey then
+        SubmitBtn.Text = "XÁC MINH THÀNH CÔNG!"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 127)
+        SubmitBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+        task.wait(1)
+        ScreenGui:Destroy()
+        -- Load script Auto Farm Bounty (Nexus Devs)
+        loadstring(game:HttpGet("https://bnty.nexusdevs.fun/_loaderui.lua"))()
+    else
+        SubmitBtn.Text = "SAI KEY! KIỂM TRA LẠI"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+        task.wait(2)
+        SubmitBtn.Text = "XÁC NHẬN KEY"
+        SubmitBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+    end
+end)
