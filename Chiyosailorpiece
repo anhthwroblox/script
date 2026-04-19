@@ -1,0 +1,88 @@
+-- Khởi tạo giao diện
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local KeyInput = Instance.new("TextBox")
+local CopyButton = Instance.new("TextButton")
+local SubmitButton = Instance.new("TextButton")
+local Notification = Instance.new("TextLabel")
+
+-- Cấu hình chính
+local CorrectKey = "ronnei_bloxfruit1611"
+local GetKeyLink = "https://link4m.net/ZQqhsvAC"
+
+-- Properties
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "SailorPieceChiyo"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -125, 0.5, -75)
+MainFrame.Size = UDim2.new(0, 250, 0, 180)
+MainFrame.Active = true
+MainFrame.Draggable = true -- Cho phép di chuyển menu
+
+Title.Parent = MainFrame
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Text = "Sailor Piece Chiyo"
+Title.TextColor3 = Color3.fromRGB(255, 100, 100) -- Màu đỏ nhẹ
+Title.TextSize = 20
+Title.Font = Enum.Font.SourceSansBold
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+
+KeyInput.Parent = MainFrame
+KeyInput.PlaceholderText = "Nhập Key vào đây..."
+KeyInput.Position = UDim2.new(0.1, 0, 0.3, 0)
+KeyInput.Size = UDim2.new(0.8, 0, 0, 30)
+KeyInput.Text = ""
+KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyInput.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+
+CopyButton.Parent = MainFrame
+CopyButton.Text = "Sao chép Link Get Key"
+CopyButton.Position = UDim2.new(0.1, 0, 0.55, 0)
+CopyButton.Size = UDim2.new(0.8, 0, 0, 25)
+CopyButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+SubmitButton.Parent = MainFrame
+SubmitButton.Text = "Kiểm tra Key"
+SubmitButton.Position = UDim2.new(0.1, 0, 0.75, 0)
+SubmitButton.Size = UDim2.new(0.8, 0, 0, 30)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+Notification.Parent = MainFrame
+Notification.Size = UDim2.new(1, 0, 0, 20)
+Notification.Position = UDim2.new(0, 0, 1, 5)
+Notification.BackgroundTransparency = 1
+Notification.Text = ""
+Notification.TextColor3 = Color3.fromRGB(255, 100, 100) -- Đỏ nhẹ
+Notification.Font = Enum.Font.SourceSansItalic
+Notification.TextSize = 16
+
+-- Chức năng sao chép link
+CopyButton.MouseButton1Click:Connect(function()
+    setclipboard(GetKeyLink)
+    Notification.Text = "Đã chép! Hãy dán lên trình duyệt để getkey"
+    wait(3)
+    Notification.Text = ""
+end)
+
+-- Chức năng kiểm tra Key và Load Script
+SubmitButton.MouseButton1Click:Connect(function()
+    if KeyInput.Text == CorrectKey then
+        Notification.TextColor3 = Color3.fromRGB(0, 255, 0)
+        Notification.Text = "Key chính xác! Đang tải script..."
+        wait(1)
+        ScreenGui:Destroy() -- Đóng menu getkey
+        
+        -- Khởi chạy Script Blox Tổng hợp
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/kaisenlmao/loader/refs/heads/main/chiyo.lua"))()
+    else
+        Notification.TextColor3 = Color3.fromRGB(255, 100, 100)
+        Notification.Text = "Key sai rồi, vui lòng thử lại!"
+    end
+end)
